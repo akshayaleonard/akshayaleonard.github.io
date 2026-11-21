@@ -1,0 +1,188 @@
+media:
+  input: uploads
+  output: /uploads
+  rename: safe
+
+content:
+  - name: activities
+    label: Activities
+    type: file
+    path: content/activities.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: year
+        label: Year
+        type: select
+        options:
+          values:
+            - name: "1"
+              label: "Year One"
+            - name: "2"
+              label: "Year Two"
+            - name: "3"
+              label: "Year Three"
+            - name: "4"
+              label: "Year Four"
+            - name: "5"
+              label: "Year Five"
+            - name: "6"
+              label: "Year Six"
+      - name: semester
+        label: Semester
+        type: select
+        options:
+          values:
+            - name: "1"
+              label: "Semester 1"
+            - name: "2"
+              label: "Semester 2"
+      - name: competency
+        label: Competency
+        type: select
+        options:
+          values:
+            - name: "medical-expert"
+              label: "01 · Medical Expert"
+            - name: "evidence-based-practitioner-scholar"
+              label: "02 · Evidence-based Practitioner & Scholar"
+            - name: "patient-care-health-advocate"
+              label: "03 · Patient Care Provider & Health Advocate"
+            - name: "communicator"
+              label: "04 · Communicator"
+            - name: "collaborator-innovator-leader"
+              label: "05 · Collaborator, Innovator & Leader"
+            - name: "professional"
+              label: "06 · Professional"
+            - name: "health-system-proponent"
+              label: "07 · Health System Proponent"
+            - name: "self-profession-enhancer"
+              label: "08 · Self & Profession Enhancer"
+            - name: "socially-accountable"
+              label: "09 · Socially Accountable"
+      - name: date
+        label: Date (e.g. 15 October 2026)
+        type: string
+      - name: location
+        label: Where
+        type: string
+      - name: role
+        label: My role
+        type: string
+      - name: featured
+        label: Feature on the homepage
+        type: boolean
+      - name: cover
+        label: Main photo (optional)
+        type: image
+      - name: description
+        label: What happened (leave an empty line between paragraphs)
+        type: text
+      - name: takeaway
+        label: Key takeaway (optional, one line)
+        type: string
+      - name: gibbs
+        label: Gibbs reflection (optional)
+        type: object
+        fields:
+          - name: description
+            label: 1 · Description (What happened?)
+            type: text
+          - name: feelings
+            label: 2 · Feelings (What was I thinking and feeling?)
+            type: text
+          - name: evaluation
+            label: 3 · Evaluation (What was good and bad about it?)
+            type: text
+          - name: analysis
+            label: 4 · Analysis (What sense can I make of it?)
+            type: text
+          - name: conclusion
+            label: 5 · Conclusion (What else could I have done?)
+            type: text
+          - name: action_plan
+            label: 6 · Action Plan (What will I do next time?)
+            type: text
+      - name: evidence
+        label: Evidence (certificates and photos)
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Title
+            type: string
+          - name: issuer
+            label: Issued by
+            type: string
+          - name: date
+            label: Date
+            type: string
+          - name: note
+            label: Note (optional)
+            type: string
+          - name: image
+            label: Image (photo, or a picture of the certificate)
+            type: image
+          - name: file
+            label: PDF (optional, the original certificate)
+            type: file
+
+  - name: moments
+    label: Year moments
+    type: file
+    path: content/moments.json
+    format: json
+    list: true
+    fields:
+      - name: year
+        label: Year
+        type: select
+        options:
+          values:
+            - name: "1"
+              label: "Year One"
+            - name: "2"
+              label: "Year Two"
+            - name: "3"
+              label: "Year Three"
+            - name: "4"
+              label: "Year Four"
+            - name: "5"
+              label: "Year Five"
+            - name: "6"
+              label: "Year Six"
+      - name: date
+        label: Date
+        type: string
+      - name: title
+        label: Title
+        type: string
+      - name: text
+        label: One-line description
+        type: string
+      - name: image
+        label: Photo
+        type: image
+      - name: activity
+        label: Link to activity (type its exact title, optional)
+        type: string
+
+  - name: site
+    label: Site photos
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: homepage_photo
+        label: Homepage main photo
+        type: image
+      - name: intro_photo
+        label: Intro photo (Hello, I'm Akshaya section)
+        type: image
+      - name: about_photo
+        label: About page photo
+        type: image

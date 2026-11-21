@@ -251,7 +251,7 @@ main{min-height:70vh}
 .chip:hover{border-color:var(--rose);color:var(--rose)}
 .chip.on{background:var(--ink);color:var(--ink-on);border-color:var(--ink)}
 .chip .n{font-family:var(--font-mono);font-size:.7rem;opacity:.7}
-.chip.empty{opacity:.45}
+.chip.none{opacity:.45}
 .elist{display:grid;gap:22px}
 .ecard{display:grid;grid-template-columns:240px 1fr auto;gap:30px;align-items:center;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:16px 28px 16px 16px;transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .4s}
 .ecard:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft);border-color:var(--rose)}
@@ -285,6 +285,9 @@ main{min-height:70vh}
 .e-body{display:grid;grid-template-columns:.42fr .58fr;gap:64px;align-items:start}
 .e-body .arch{aspect-ratio:4/5;box-shadow:var(--shadow-soft);position:sticky;top:110px}
 .e-body .arch img{width:100%;height:100%;object-fit:cover}
+.docframe{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px;box-shadow:var(--shadow-soft);position:sticky;top:110px;rotate:-1.5deg}
+.docframe img{width:100%;border-radius:10px}
+@media (max-width:860px){.docframe{position:static;max-width:420px}}
 .prose{display:grid;gap:20px;font-size:1.13rem;line-height:1.72;max-width:65ch;color:color-mix(in oklab,var(--ink) 88%,transparent)}
 .prose p:first-child::first-letter{font-family:var(--font-display);font-size:4.6rem;float:left;line-height:.8;padding:8px 10px 0 0;color:var(--rose)}
 .pull{font-family:var(--font-display);font-style:italic;font-size:clamp(2rem,4vw,3.2rem);line-height:1.12;max-width:26ch;margin:0 auto;text-align:center}
@@ -510,7 +513,7 @@ window.addEventListener("hashchange",function(){FILTER=null;render();});
 function hdr(r){
   var on=function(v){return r.v===v?" on":"";};
   var yrOn=(r.v==="year"||r.v==="sem"||r.v==="entry")?" on":"";
-  var menu=YEAR_WORDS.map(function(w,i){var n=STATE.entries.filter(function(e){return e.year===i+1;}).length;return '<a href="#year-'+(i+1)+'"><span>Year '+w+'</span><span class="eyebrow muted">'+(n?n+' filed':acad(i+1))+'</span></a>';}).join("");
+  var menu=YEAR_WORDS.map(function(w,i){var n=STATE.entries.filter(function(e){return e.year===i+1;}).length;return '<a href="#year-'+(i+1)+'"><span>Year '+w+'</span><span class="eyebrow muted">'+(n?n+' filed':'')+'</span></a>';}).join("");
   var mobYrs=YEAR_WORDS.map(function(w,i){return '<a href="#year-'+(i+1)+'">'+(i+1)+'</a>';}).join("");
   return '<header class="hdr" id="hdr"><div class="wrap">'+
     '<a class="brand" href="#home"><b>Akshaya</b><span class="eyebrow muted">MD · GMU</span></a>'+
@@ -554,8 +557,8 @@ function vHome(){
       '<h1 style="margin-top:22px">Akshaya<br><em>Leonard</em></h1>'+
       '<p class="lede">'+esc(PROFILE.tagline)+'</p>'+
       '<div class="ctas"><a class="btn btn-rose" href="#year-'+CURRENT_YEAR+'">Open Year '+YEAR_WORDS[CURRENT_YEAR-1]+' '+ICON.right+'</a><a class="btn btn-quiet" href="#about">About me</a></div>'+
-      '<div class="meta-row"><span class="eyebrow muted">'+esc(PROFILE.city)+'</span><span class="eyebrow muted">'+acad(CURRENT_YEAR)+'</span><span class="eyebrow muted">'+total+' '+(total===1?'activity':'activities')+' filed</span><span class="eyebrow muted">'+covered+' / 9 competencies</span></div></div>'+
-      '<div class="hero-photo">'+(heroImg?'<div class="arch"><img src="'+esc(heroImg)+'" alt="Portrait of Akshaya Leonard"></div>':'<div class="arch grain" style="aspect-ratio:4/5;background:linear-gradient(160deg,var(--sand),var(--oak))"></div>')+
+      '<div class="meta-row"><span class="eyebrow muted">'+esc(PROFILE.city)+'</span><span class="eyebrow muted">'+total+' '+(total===1?'activity':'activities')+' filed</span><span class="eyebrow muted">'+covered+' / 9 competencies</span></div></div>'+
+      '<div class="hero-photo">'+(heroImg?'<div class="arch"><img src="'+esc(heroImg)+'" alt="Akshaya Leonard"></div>':'<div class="arch grain" style="aspect-ratio:4/5;background:linear-gradient(160deg,var(--sand),var(--oak))"></div>')+
       '<div class="badge"><svg viewBox="0 0 200 200"><defs><path id="bc" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text style="font-family:var(--font-mono);font-size:14px;letter-spacing:.3em;text-transform:uppercase;fill:currentColor"><textPath href="#bc">MD Portfolio · Gulf Medical University · </textPath></text></svg><span>AL</span></div></div>'+
     '</div></div></section>';
   s+='<div class="marquee" aria-hidden="true"><div class="track">'+[0,1].map(function(){return COMPS.map(function(c){return '<span>'+esc(c.title)+'<i>✦</i></span>';}).join("");}).join("")+'</div></div>';
@@ -566,7 +569,7 @@ function vHome(){
   for(var y=1;y<=6;y++){
     var s1=entriesIn(y,1).length,s2=entriesIn(y,2).length;
     s+='<a class="yr'+(y===CURRENT_YEAR?' now':'')+'" href="#year-'+y+'" data-cursor="Open">'+(y===CURRENT_YEAR?'<span class="now-tag eyebrow">Now</span>':'')+
-      '<span class="num">'+pad(y)+'</span><div><h3>Year '+YEAR_WORDS[y-1]+'</h3><p class="eyebrow muted" style="margin-top:6px">'+acad(y)+'</p></div>'+
+      '<span class="num">'+pad(y)+'</span><div><h3>Year '+YEAR_WORDS[y-1]+'</h3></div>'+
       '<div class="sems"><span class="'+(s1?'has':'')+'">Sem 1'+(s1?' · '+s1:'')+'</span><span class="'+(s2?'has':'')+'">Sem 2'+(s2?' · '+s2:'')+'</span></div></a>';
   }
   s+='</div></div></section>';
@@ -668,7 +671,7 @@ function vSem(y,sem){
     '<p class="sub">'+list.length+' '+(list.length===1?'activity':'activities')+' filed, covering '+Object.keys(counts).length+' of the 9 competencies.</p></div></section>';
   s+='<section style="padding-bottom:40px"><div class="wrap">';
   s+='<div class="filters" role="group" aria-label="Filter by competency"><button class="chip'+(!FILTER?' on':'')+'" data-f="">All <span class="n">'+list.length+'</span></button>'+
-    COMPS.map(function(c){return '<button class="chip'+(FILTER===c.slug?' on':'')+(counts[c.slug]?'':' empty')+'" data-f="'+c.slug+'" title="'+esc(c.title)+'">'+esc(c.title)+' <span class="n">'+(counts[c.slug]||0)+'</span></button>';}).join("")+'</div>';
+    COMPS.map(function(c){return '<button class="chip'+(FILTER===c.slug?' on':'')+(counts[c.slug]?'':' none')+'" data-f="'+c.slug+'" title="'+esc(c.title)+'">'+esc(c.title)+' <span class="n">'+(counts[c.slug]||0)+'</span></button>';}).join("")+'</div>';
   s+='<div class="elist">';
   if(EDIT.on) s+='<button class="add-card" id="addEntry">+ Add an activity<small>Pick the competency, write it up, and drop in your certificates or photos.</small></button>';
   if(shown.length) s+=shown.map(ecard).join("");
@@ -692,15 +695,16 @@ function vEntry(id){
     '<div class="e-meta"><div><p class="eyebrow muted">Date</p><p>'+esc(e.date||"—")+'</p></div><div><p class="eyebrow muted">Where</p><p>'+esc(e.location||"—")+'</p></div><div><p class="eyebrow muted">My role</p><p>'+esc(e.role||"—")+'</p></div><div><p class="eyebrow muted">Filed under</p><p>'+yearLabel(e.year)+' · Semester '+e.sem+'<br>'+esc(c.title)+'</p></div></div>'+
     (EDIT.on?'<div class="edit-bar"><button class="btn btn-ink btn-sm" id="editEntry">Edit this activity</button><button class="btn btn-quiet btn-sm" id="delEntry">Delete</button></div>':'')+
     '</div></section>';
-  s+='<section class="sec" style="padding-top:40px"><div class="wrap"><div class="e-body">'+(img?'<div class="arch"><img src="'+esc(img)+'" alt=""></div>':'<div></div>')+
+  var side = e.cover ? '<div class="arch"><img src="'+esc(e.cover)+'" alt=""></div>' : (img ? '<div class="docframe"><img src="'+esc(img)+'" alt=""></div>' : '<div></div>');
+  s+='<section class="sec" style="padding-top:40px"><div class="wrap"><div class="e-body">'+side+
     '<div><p class="eyebrow rose" style="margin-bottom:22px">The activity</p><div class="prose">'+(e.activity||[]).map(function(p){return '<p>'+esc(p)+'</p>';}).join("")+'</div></div></div></div></section>';
   if(e.takeaway) s+='<section style="padding:40px 0 90px"><div class="wrap"><p class="pull">'+esc(e.takeaway)+'</p></div></section>';
   if(e.gibbs && STAGES.some(function(st){return (e.gibbs[st]||[]).length;})){
-    s+='<section class="sec grain" style="background:var(--card);border-block:1px solid var(--line)"><div class="wrap"><div class="sec-head"><div><p class="eyebrow rose">Gibbs reflective cycle (1988)</p><h2 style="margin-top:14px">Reflecting, <em>stage by stage</em></h2></div><p class="muted">Click a stage on the wheel, use the arrow keys, or read all six in order.</p></div><div id="gibbsMount"></div></div></section>';
+    s+='<section class="sec grain" style="background:var(--card);border-block:1px solid var(--line)"><div class="wrap"><div class="sec-head"><div><p class="eyebrow rose">Gibbs reflective cycle</p><h2 style="margin-top:14px">Reflecting, <em>stage by stage</em></h2></div><p class="muted">Click a stage on the wheel, use the arrow keys, or read all six in order.</p></div><div id="gibbsMount"></div></div></section>';
   }
   if((e.evidence||[]).length){
     s+='<section class="sec"><div class="wrap"><div class="sec-head"><div><p class="eyebrow rose">Evidence</p><h2 style="margin-top:14px">Certificates <em>&amp; records</em></h2></div><p class="muted">Click any item to view it full size'+(e.evidence.some(function(v){return v.file;})?' or open the original PDF':'')+'.</p></div><div class="egrid">'+
-      e.evidence.map(function(v,i){return '<button class="ev" data-ev="'+i+'" data-cursor="View"><div class="fr"><div class="ph">'+(v.image?'<img src="'+esc(v.image)+'" alt="'+esc(v.title)+'" loading="lazy">':'<span class="pdf">PDF</span>')+'</div></div><p class="eyebrow muted" style="margin-top:16px">'+esc(v.date||"")+'</p><h4>'+esc(v.title||"Evidence")+'</h4><p class="muted" style="font-size:.92rem;margin-top:4px">'+esc(v.issuer||"")+'</p></button>';}).join("")+
+      e.evidence.map(function(v,i){return '<button class="ev" data-ev="'+i+'" data-cursor="View"><div class="fr"><div class="ph">'+(v.image?'<img src="'+esc(v.image)+'" alt="'+esc(v.title)+'" loading="lazy">':'<span class="pdf">PDF</span>')+'</div></div>'+(v.date?'<p class="eyebrow muted" style="margin-top:16px">'+esc(v.date)+'</p>':'<div style="height:4px"></div>')+'<h4>'+esc(v.title||"Evidence")+'</h4>'+(v.issuer?'<p class="muted" style="font-size:.92rem;margin-top:4px">'+esc(v.issuer)+'</p>':'')+'</button>';}).join("")+
       '</div></div></section>';
   }
   s+='<section style="padding-bottom:60px"><div class="wrap"><div class="pager"><a href="#year-'+e.year+'-sem-'+e.sem+'"><span class="eyebrow muted">← Back</span><span>'+yearLabel(e.year)+' · Semester '+e.sem+'</span></a><a href="#competencies"><span class="eyebrow muted">See all →</span><span>Competencies</span></a></div></div></section>';

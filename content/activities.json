@@ -8,7 +8,7 @@
     "location": "College of Medicine, Gulf Medical University, Ajman",
     "role": "Organizing team member: event banner design, photography and timing the plank competition",
     "featured": true,
-    "cover": "/uploads/world-anatomy-day-team.jpg",
+    "cover": "/uploads/world-anatomy-day-banner.jpg",
     "description": "Gulf Medical University's College of Medicine marked World Anatomy Day on its campus in Ajman on 15 October 2026. The day was dedicated to Andreas Vesalius, the father of modern anatomy, and the year 2026 had the theme of “Anatomy for All”.\n\nAs part of a team of eight, I helped organize the event, which welcomed visiting high school students. Our main activity was a plank competition. High school students held a plank for as long as they could, and the student who held it the longest won. As they played, my team members explained the muscles involved in holding the plank to the students using an abdominal model.\n\nI designed the event banner, took photographs of the competition, and timed the participants. The plank competition demonstrated creativity, by turning an anatomy concept into a fun interactive game that students could understand and enjoy. This was also my first experience coordinating an event at the university and with high school students.",
     "takeaway": "Anatomy becomes unforgettable the moment you make it something people can feel.",
     "gibbs": {
@@ -22,27 +22,67 @@
     "evidence": [
       {
         "title": "Certificate of Appreciation: World Anatomy Day",
-        "issuer": "College of Medicine, Gulf Medical University",
-        "date": "15 October 2026",
-        "note": "Awarded for organizing World Anatomy Day. Signed by Prof. Manda Venkatramana, Chancellor.",
+        "issuer": "",
+        "date": "",
+        "note": "Awarded for organizing World Anatomy Day.",
         "image": "/uploads/world-anatomy-day-certificate.jpg",
         "file": "/uploads/world-anatomy-day-certificate.pdf"
       },
       {
+        "title": "The banner I designed",
+        "issuer": "",
+        "date": "",
+        "note": "Holding the World Anatomy Day banner at the event.",
+        "image": "/uploads/world-anatomy-day-banner.jpg",
+        "file": ""
+      },
+      {
         "title": "World Anatomy Day: Event Invitation",
-        "issuer": "Anatomy Discipline, Department of Biomedical Sciences",
-        "date": "15 October 2026 · Library Foyer, GMU",
-        "note": "Official event poster for the educational program organised by the MD program.",
+        "issuer": "",
+        "date": "",
+        "note": "Official event poster.",
         "image": "/uploads/world-anatomy-day-poster.jpg",
         "file": ""
       },
       {
         "title": "Behind the scenes: making the banner",
-        "issuer": "Organizing team",
-        "date": "October 2026",
-        "note": "Preparing the event banner with fellow organizers.",
+        "issuer": "",
+        "date": "",
+        "note": "Preparing the banner with fellow organizers.",
         "image": "/uploads/world-anatomy-day-team.jpg",
         "file": ""
+      }
+    ]
+  },
+  {
+    "title": "HAYAT Program: Organ Donation Awareness",
+    "year": "1",
+    "semester": "1",
+    "competency": "self-profession-enhancer",
+    "date": "30 September 2026",
+    "location": "Gulf Medical University, Ajman",
+    "role": "Participant",
+    "featured": false,
+    "cover": "",
+    "description": "On 30 September 2026, I attended a public awareness lecture on the UAE's national HAYAT Organ Donation and Transplant Program at Gulf Medical University, Ajman. The College of Medicine organized it through its Community Engagement Committee, in collaboration with Thumbay University Hospital, and about 235 students attended. Two experts from the Ministry of Health and Prevention, Dr. Raghad Najm Al-Juboori and Anan P., explained the organ donation process, the national transplantation framework, and how healthcare professionals can address misconceptions and support informed decisions. I was inspired to see how the HAYAT Program has saved the lives of so many people, and it showed me the role future doctors can play in encouraging donation.",
+    "takeaway": "",
+    "gibbs": {},
+    "evidence": [
+      {
+        "title": "Certificate of Appreciation: HAYAT Program",
+        "issuer": "",
+        "date": "",
+        "note": "From the Ministry of Health and Prevention, Ajman office.",
+        "image": "/uploads/hayat-certificate-of-appreciation.jpg",
+        "file": "/uploads/hayat-certificate-of-appreciation.pdf"
+      },
+      {
+        "title": "Certificate of Participation: HAYAT Program",
+        "issuer": "",
+        "date": "",
+        "note": "From Gulf Medical University.",
+        "image": "/uploads/hayat-participation-certificate.jpg",
+        "file": "/uploads/hayat-participation-certificate.pdf"
       }
     ]
   }

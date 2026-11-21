@@ -21,6 +21,11 @@
     },
     "evidence": [
       {
+        "title": "World Anatomy Day: Event Invitation",
+        "note": "Official event poster.",
+        "image": "/uploads/world-anatomy-day-poster.jpg"
+      },
+      {
         "title": "Certificate of Appreciation: World Anatomy Day",
         "note": "Awarded for organizing World Anatomy Day.",
         "image": "/uploads/world-anatomy-day-certificate.jpg",
@@ -30,11 +35,6 @@
         "title": "The banner I designed",
         "note": "Holding the World Anatomy Day banner at the event.",
         "image": "/uploads/world-anatomy-day-banner.jpg"
-      },
-      {
-        "title": "World Anatomy Day: Event Invitation",
-        "note": "Official event poster.",
-        "image": "/uploads/world-anatomy-day-poster.jpg"
       },
       {
         "title": "Behind the scenes: making the banner",
